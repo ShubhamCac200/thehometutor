@@ -28,13 +28,15 @@
 
             <!-- Navigation -->
             <nav class="nav">
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
+                <div class="nav-left">
+                    <a href="/">Home</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                </div>
 
-                <?php if (session()->has('user')):
-                    $u = session()->get('user'); ?>
-                    <div class="user-area">
+                <div class="nav-right">
+                    <?php if (session()->has('user')):
+                        $u = session()->get('user'); ?>
                         <span class="user-greet">Hi, <?= htmlspecialchars($u['full_name']) ?></span>
 
                         <?php if ($u['role'] === 'admin'): ?>
@@ -44,10 +46,11 @@
                         <?php endif; ?>
 
                         <a href="/logout" class="btn">Logout</a>
-                    </div>
-                <?php else: ?>
-                    <a href="/login" class="btn">Login</a>
-                    <a href="/register" class="btn">Register</a>
-                <?php endif; ?>
+                    <?php else: ?>
+                        <a href="/login" class="btn">Login</a>
+                        <a href="/register" class="btn">Register</a>
+                    <?php endif; ?>
+                </div>
             </nav>
+
         </header>

@@ -12,55 +12,50 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--text)}
 a{color:var(--accent);text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:28px}
 /* ===== HEADER ===== */
-/* User area in nav */
-.user-area {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* spacing between greeting and buttons */
-}
-
-.user-greet {
-    font-weight: 600;
-    color: #000; /* dark text for grey header */
-}
-
+/* Header container */
+/* Header container */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 18px 5%;
     background-color: #f5f5f5; /* light grey background */
-    color: #000; /* black text for contrast */
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    color: #000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
-    position: relative;
-    z-index: 100;
+    gap: 15px;
 }
 
 /* Brand container */
 .brand {
     display: flex;
     align-items: center;
-    gap: 20px; /* more space between logo and text */
+    gap: 20px; /* spacing between logo and text */
 }
 
 /* Logo image */
 .logo-img {
-    width: 100px;          /* increase size */
-    height: 100px;         /* increase size */
+    width: 100px;
+    height: 100px;
     object-fit: contain;
-    border-radius: 12px;   /* optional */
+    border-radius: 12px;
 }
 
 /* Brand text */
+.brand-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .brand-info .site-title {
-    font-size: 2.5em;      /* bigger title */
+    font-size: 2em;
     font-weight: bold;
     color: #000;
 }
 
 .brand-info .tagline {
-    font-size: 1.1em;      /* slightly bigger tagline */
+    font-size: 1em;
     color: #555;
 }
 
@@ -72,13 +67,14 @@ a{color:var(--accent);text-decoration:none}
     flex-wrap: wrap;
 }
 
+/* Nav links */
 .nav a {
-    color: #e10600; /* red links */
     text-decoration: none;
     padding: 8px 16px;
     border-radius: 6px;
     font-weight: 500;
     transition: all 0.3s;
+    color: #e10600; /* red links */
 }
 
 .nav a:hover {
@@ -86,7 +82,7 @@ a{color:var(--accent);text-decoration:none}
     color: #fff;
 }
 
-/* Ghost Buttons */
+/* Ghost buttons */
 .nav .btn.ghost {
     background-color: transparent;
     border: 1px solid #e10600;
@@ -96,10 +92,9 @@ a{color:var(--accent);text-decoration:none}
 .nav .btn.ghost:hover {
     background-color: #e10600;
     color: #fff;
-    border-color: #e10600;
 }
 
-/* Normal Buttons */
+/* Normal buttons */
 .nav .btn {
     background-color: #e10600;
     border: none;
@@ -110,17 +105,53 @@ a{color:var(--accent);text-decoration:none}
     background-color: #b00400; /* darker red hover */
 }
 
-/* Logged-in greeting */
-.user-greet {
-    margin-right: 10px;
-    font-weight: 600;
-    color: #000;
+/* User area / greeting */
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.brand{display:flex;align-items:center;gap:12px}
-.logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#9b0000);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px}
-.site-title{font-weight:700;color:#000;font-size:20px}
-.nav{display:flex;gap:16px;align-items:center}
+.user-greet {
+    white-space: nowrap; /* prevent wrapping */
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .logo-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .brand-info .site-title {
+        font-size: 1.6em;
+    }
+
+    .brand-info .tagline {
+        font-size: 0.9em;
+    }
+
+    .user-area {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+}
+
+/*header*/
+
 .btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
 .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--accent)}
 .hero{background:#fff;padding:36px;border-radius:12px;margin-top:12px;display:flex;gap:24px;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
