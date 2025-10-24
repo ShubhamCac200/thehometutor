@@ -1,20 +1,50 @@
 <?= $this->include('layouts/header') ?>
 
-
 <h2 class="section-title">Admin Dashboard</h2>
+
+<!-- Quick Stats Card -->
 <div class="card-grid">
+    <div class="card card-stat">
+        <h3>📊 Quick Stats (Demo)</h3>
+        <!-- <p>Tutors: 120 (demo)<br>Students: 840 (demo)</p> -->
+        <p>Total Users: <?= $total_users ?></p>
+    </div>
+</div>
+
+<!-- Registered Users Table -->
 <div class="card">
-<strong style="color:#fff">Quick Stats (demo)</strong>
-<div style="margin-top:8px;color:var(--muted)">Tutors: 120 (demo)<br>Students: 840 (demo)</div>
+    <h3>📝 Registered Users</h3>
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Registered At</th>
+            </tr>
+        </thead>
+        <?php $count = ($pager->getCurrentPage() - 1) * $pager->getPerPage() + 1; ?>
+        <tbody>
+            <?php foreach ($users as $user): ?>
+                <tr>
+                    <td><?= $count++ ?></td>
+                    <td><?= htmlspecialchars($user['full_name']) ?></td>
+                    <td><?= htmlspecialchars($user['email']) ?></td>
+                    <td><?= htmlspecialchars($user['role']) ?></td>
+                    <td><?= date('d-m-Y H:i', strtotime($user['created_at'])) ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+
+    </table>
+    <!-- Pagination -->
+    <div class="pagination-wrapper">
+        <?= $pager->links() ?>
+    </div>
 </div>
-<div class="card">
-<strong style="color:#fff">Recent Signups</strong>
-<div style="margin-top:8px;color:var(--muted)">
-- Rohit Sharma (rohit@example.com)<br>
-- Anjali Singh (anjali@example.com)
-</div>
-</div>
-</div>
+
+
 
 
 <?= $this->include('layouts/footer') ?>

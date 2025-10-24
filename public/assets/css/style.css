@@ -18,7 +18,7 @@ a{color:var(--accent);text-decoration:none}
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 5%;
+    padding: 18px 2%;
     background-color: #f5f5f5; /* light grey background */
     color: #000;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
@@ -526,4 +526,64 @@ a{color:var(--accent);text-decoration:none}
     }
 }
 
+/*paging admin list of users*/
+/* User Table */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
 
+.user-table th,
+.user-table td {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: #e10600;
+    color: #fff;
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Pagination Container */
+.pagination-wrapper {
+    margin-top: 20px;
+    text-align: center;
+    clear: both; /* ensures it stays below the table */
+}
+
+/* Pagination Links */
+.pagination-wrapper .pagination {
+    display: inline-flex;
+    list-style: none;
+    gap: 6px;
+    padding: 0;
+}
+
+.pagination-wrapper .pagination li a,
+.pagination-wrapper .pagination li span {
+    display: block;
+    padding: 6px 12px;
+    background: #fff;
+    border: 1px solid #e10600;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #e10600;
+    transition: all 0.3s;
+}
+
+.pagination-wrapper .pagination li a:hover {
+    background-color: #e10600;
+    color: #fff;
+}
+
+.pagination-wrapper .pagination .active span {
+    background-color: #e10600;
+    color: #fff;
+    border-color: #e10600;
+}

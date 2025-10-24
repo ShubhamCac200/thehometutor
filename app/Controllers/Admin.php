@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
+
 class Admin extends BaseController
 {
     public function index()
@@ -9,10 +11,24 @@ class Admin extends BaseController
         $session = session();
         $user = $session->get('user');
 
-        if (!$user || $user['role'] !== 'admin') {
-            return redirect()->to('/login');
+        if (!$user) {
+            return redirect()->to('/login'); // Not logged in
         }
 
-        return view('admin/dashboard', ['user' => $user]);
+        if ($user['role'] !== 'admin') {
+            return view('errors/html/access_denied'); // Access denied page
+        }
+
+        $model = new UserModel();
+        $data['total_users'] = $model->where('role !=', 'admin')->countAllResults();
+        // Paginate users, 20 per page
+        // Paginate non-admin users, 20 per page
+        $data['users'] = $model
+            ->where('role !=', 'admin')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(50);
+        $data['pager'] = $model->pager;
+        return view('admin/dashboard', $data);
     }
+
 }

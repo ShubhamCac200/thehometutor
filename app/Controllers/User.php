@@ -12,7 +12,7 @@ class User extends BaseController
         if (!$user || $user['role'] !== 'user') {
             return redirect()->to('/login');
         }
-
+        
         return view('user/dashboard', ['user' => $user]);
     }
 }

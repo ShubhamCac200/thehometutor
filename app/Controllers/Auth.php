@@ -23,7 +23,7 @@ class Auth extends BaseController
 
         if ($user && password_verify($password, $user['password'])) {
             $session->set('user', $user);
-
+            $session->setFlashdata('success', 'Successfully logged in!');
             if ($user['role'] === 'admin') {
                 return redirect()->to('/admin');
             } else {
