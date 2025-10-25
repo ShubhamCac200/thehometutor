@@ -22,13 +22,17 @@ class Auth extends BaseController
         $user = $model->where('email', $email)->first();
 
         if ($user && password_verify($password, $user['password'])) {
+
+            // Update last login IP and timestamp
+            $model->update($user['id'], [
+                'last_login_ip' => $this->request->getIPAddress(),
+                'last_login_at' => date('Y-m-d H:i:s')
+            ]);
+
             $session->set('user', $user);
             $session->setFlashdata('success', 'Successfully logged in!');
-            if ($user['role'] === 'admin') {
-                return redirect()->to('/admin');
-            } else {
-                return redirect()->to('/user');
-            }
+
+            return redirect()->to($user['role'] === 'admin' ? '/admin' : '/user');
         }
 
         return redirect()->back()->with('error', 'Invalid email or password.');
@@ -39,7 +43,7 @@ class Auth extends BaseController
         session()->destroy();
         return redirect()->to('/');
     }
-     public function forgotPassword()
+    public function forgotPassword()
     {
         return view('auth/forgot_password');
     }

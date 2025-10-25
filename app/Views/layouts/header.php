@@ -43,7 +43,7 @@
                         <span class="user-greet">Hi, <?= htmlspecialchars($u['full_name']) ?></span>
 
                         <?php if ($u['role'] === 'admin'): ?>
-                            <a href="/admin" class="btn ghost">Admin Dashboard</a>
+                            <a href="/admin" class="btn ghost">Dashboard</a>
                         <?php else: ?>
                             <a href="/user" class="btn ghost">Dashboard</a>
                         <?php endif; ?>

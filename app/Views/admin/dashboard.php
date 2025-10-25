@@ -21,6 +21,7 @@
                 <th>Full Name</th>
                 <th>Email</th>
                 <th>Role</th>
+                <th>Last Login</th>
                 <th>Registered At</th>
             </tr>
         </thead>
@@ -32,6 +33,7 @@
                     <td><?= htmlspecialchars($user['full_name']) ?></td>
                     <td><?= htmlspecialchars($user['email']) ?></td>
                     <td><?= htmlspecialchars($user['role']) ?></td>
+                    <td><?= date('d-m-Y H:i', strtotime($user['last_login_at'])) ?></td>
                     <td><?= date('d-m-Y H:i', strtotime($user['created_at'])) ?></td>
                 </tr>
             <?php endforeach; ?>

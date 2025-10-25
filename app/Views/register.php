@@ -22,6 +22,9 @@
             <label>Email</label>
             <input class="input" type="email" name="email" placeholder="Email" value="<?= set_value('email') ?>" required>
 
+            <label>Mobile</label>
+            <input class="input" type="text" name="mobile" placeholder="Mobile Number" value="<?= set_value('mobile') ?>" required>
+
             <label>Password</label>
             <input class="input" type="password" name="password" placeholder="Password" required>
 
