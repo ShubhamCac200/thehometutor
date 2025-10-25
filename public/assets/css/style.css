@@ -522,10 +522,20 @@ a{color:var(--accent);text-decoration:none}
 
 /*paging admin list of users*/
 /* User Table */
+/* Responsive Table Container */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* smooth scroll on mobile */
+    border-radius: 8px;
+}
+
+/* User Table */
 .user-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
+    min-width: 700px; /* ensures table scrolls on small devices */
 }
 
 .user-table th,
@@ -533,11 +543,15 @@ a{color:var(--accent);text-decoration:none}
     padding: 10px 12px;
     border: 1px solid #ddd;
     text-align: left;
+    white-space: nowrap; /* prevent text wrapping in cells */
 }
 
 .user-table th {
     background-color: #e10600;
     color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1; /* keep header on top when scrolling */
 }
 
 .user-table tr:nth-child(even) {
@@ -548,7 +562,7 @@ a{color:var(--accent);text-decoration:none}
 .pagination-wrapper {
     margin-top: 20px;
     text-align: center;
-    clear: both; /* ensures it stays below the table */
+    clear: both;
 }
 
 /* Pagination Links */
@@ -580,4 +594,24 @@ a{color:var(--accent);text-decoration:none}
     background-color: #e10600;
     color: #fff;
     border-color: #e10600;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 600px) {
+    .card h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .user-table th,
+    .user-table td {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .pagination-wrapper .pagination li a,
+    .pagination-wrapper .pagination li span {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
 }
