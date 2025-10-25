@@ -217,22 +217,21 @@ a{color:var(--accent);text-decoration:none}
     font-weight: 600;
 }
 
-.footer .social-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 8px;
 }
 
-.footer .social-icons a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.2em;
-    transition: transform 0.3s, color 0.3s;
+.social-icons a {
+  color: #fff;
+  font-size: 22px;
+  transition: color 0.3s, transform 0.3s;
 }
 
-.footer .social-icons a:hover {
-    color: #ffdd57; /* Highlight on hover */
-    transform: scale(1.2);
+.social-icons a:hover {
+  color: #ff9800; /* your brand color */
+  transform: scale(1.2);
 }
 
 /* Bottom Section */
@@ -240,9 +239,35 @@ a{color:var(--accent);text-decoration:none}
     width: 100%;
     text-align: center;
     margin-top: 25px;
-    color: #ccc;
+    color: #ddd; /* softer gray for better contrast on red/black */
     font-size: 0.9em;
 }
+
+.footer .footer-bottom a {
+    color: #ffd700; /* warm gold to pop on red/black */
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.footer .footer-bottom a[href*="instagram"] {
+    color: #ff7aa2; /* subtle pink tone */
+}
+
+.footer .footer-bottom a[href*="linkedin"] {
+    color: #66b3ff; /* softer LinkedIn blue */
+}
+
+.footer .footer-bottom a[href*="wa.me"] {
+    color: #7CFC00; /* fresh lime green for Shubham name */
+}
+
+.footer .footer-bottom a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
 .footer .social-icons {
     display: flex;
     flex-wrap: wrap;
