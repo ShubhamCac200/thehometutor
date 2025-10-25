@@ -39,4 +39,34 @@ class Auth extends BaseController
         session()->destroy();
         return redirect()->to('/');
     }
+     public function forgotPassword()
+    {
+        return view('auth/forgot_password');
+    }
+
+    public function processForgotPassword()
+    {
+        $email = $this->request->getPost('email');
+        $model = new UserModel();
+        $user = $model->where('email', $email)->first();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'No user found with that email address.');
+        }
+
+        // Generate a reset token
+        $token = bin2hex(random_bytes(16));
+
+        // Store the token and expiry in database (you’ll need these columns)
+        $model->update($user['id'], [
+            'reset_token' => $token,
+            'reset_expires' => date('Y-m-d H:i:s', strtotime('+1 hour'))
+        ]);
+
+        // Normally, you’d send an email here
+        // For now, just flash the link for demo
+        $resetLink = base_url('/reset-password/' . $token);
+
+        return redirect()->back()->with('success', 'Password reset link: ' . $resetLink);
+    }
 }

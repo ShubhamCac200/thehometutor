@@ -292,38 +292,7 @@ a{color:var(--accent);text-decoration:none}
 
 
 
-/* Toast Notifications */
-.toast {
-  visibility: hidden;
-  min-width: 250px;
-  background-color: #222;
-  color: #fff;
-  text-align: center;
-  border-radius: 8px;
-  padding: 16px;
-  position: fixed;
-  z-index: 9999;
-  left: 50%;
-  bottom: 30px;
-  transform: translateX(-50%);
-  font-size: 15px;
-  opacity: 0;
-  transition: opacity 0.4s, bottom 0.4s;
-}
 
-.toast.show {
-  visibility: visible;
-  opacity: 1;
-  bottom: 50px;
-}
-
-.toast.success {
-  background-color: #27ae60; /* green */
-}
-
-.toast.error {
-  background-color: #e74c3c; /* red */
-}
 /* Auth Page Container */
 .auth-page {
     display: flex;

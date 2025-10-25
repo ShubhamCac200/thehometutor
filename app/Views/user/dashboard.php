@@ -1,10 +1,6 @@
 <?= $this->include('layouts/header') ?>
 
-<?php if(session()->getFlashdata('success')): ?>
-<div class="toast success-toast" id="login-toast">
-    <?= session()->getFlashdata('success') ?>
-</div>
-<?php endif; ?>
+
 <h2 class="section-title">Your Dashboard</h2>
 <div class="card">
     <strong style="color:#fff">Welcome back, <?= esc($user['full_name']) ?>!</strong>

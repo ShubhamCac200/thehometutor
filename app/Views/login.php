@@ -17,7 +17,13 @@
             <label>Password</label>
             <input class="input" type="password" name="password" required>
 
-            <button class="btn">Login</button>
+            <div style="text-align: right; margin-top: 4px;">
+                <a href="/forgot-password" style="font-size: 14px; color: #e10600; text-decoration: none;">
+                    Forgot Password?
+                </a>
+            </div>
+
+            <button class="btn" style="margin-top: 10px;">Login</button>
         </form>
 
         <p class="switch">

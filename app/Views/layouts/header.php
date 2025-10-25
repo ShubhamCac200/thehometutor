@@ -7,6 +7,8 @@
     <title>The Home Tutor</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/toast.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
 
@@ -54,3 +56,6 @@
             </nav>
 
         </header>
+        <!-- Toast container -->
+        <!-- Toast container for jQuery toasts -->
+        <div id="toast-container"></div>

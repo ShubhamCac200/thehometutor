@@ -26,11 +26,9 @@ class Register extends Controller
         ];
 
         if (!$this->validate($rules)) {
-            return view('layouts/header')
-                . view('register', [
+            return view('register', [
                     'validation' => $this->validator
-                ])
-                . view('layouts/footer');
+                ]);
         }
 
         $userModel = new UserModel();
