@@ -95,5 +95,29 @@ class QuizController extends BaseController
             'questions' => $questions
         ]);
     }
+    // Submit quiz answers
+    public function submit($quizTitleId)
+    {
+        $quizModel = new QuizModel();
+        $questions = $quizModel->where('quiz_title_id', $quizTitleId)->findAll();
+
+        $score = 0;
+        $answers = [];
+        foreach ($questions as $q) {
+            $ans = $this->request->getPost('question_' . $q['id']);
+            $answers[$q['id']] = $ans;
+            if ($ans && $ans === $q['correct_option']) {
+                $score++;
+            }
+        }
+
+        return $this->response->setJSON([
+            'success' => true,
+            'score' => $score,
+            'total' => count($questions),
+            'answers' => $answers,
+            'correct' => array_column($questions, 'correct_option', 'id')
+        ]);
+    }
 
 }
