@@ -27,10 +27,19 @@ $routes->get('reset-password', 'PasswordReset::resetPasswordForm');
 $routes->post('reset-password', 'PasswordReset::resetPassword');
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
-    $routes->get('quiz', 'QuizController::index'); // Quiz list (Manage quizzes)
+    $routes->get('quiz', 'QuizController::index'); // Quiz list
     $routes->get('quiz/create', 'QuizController::create'); // Create quiz form
     $routes->post('quiz/store', 'QuizController::store'); // Save quiz & questions
+    $routes->get('quiz/view/(:num)', 'QuizController::view/$1'); // ✅ Corrected route
 });
+
+// $routes->group('admin/quiz', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+//     $routes->get('/', 'QuizController::index');
+//     $routes->get('create', 'QuizController::create');
+//     $routes->post('store', 'QuizController::store');
+//     $routes->get('view/(:num)', 'QuizController::view/$1');
+// });
+
 
 
 
