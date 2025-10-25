@@ -26,5 +26,13 @@ $routes->post('verify-otp', 'PasswordReset::verifyOtp');
 $routes->get('reset-password', 'PasswordReset::resetPasswordForm');
 $routes->post('reset-password', 'PasswordReset::resetPassword');
 
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
+    $routes->get('quiz', 'QuizController::index'); // Quiz list (Manage quizzes)
+    $routes->get('quiz/create', 'QuizController::create'); // Create quiz form
+    $routes->post('quiz/store', 'QuizController::store'); // Save quiz & questions
+});
+
+
+
 
 
