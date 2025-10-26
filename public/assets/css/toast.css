@@ -1,38 +1,25 @@
-/* Toast container */
-#toast-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+/* SweetAlert2 Elegant Toasts */
+.swal2-popup.elegant-toast {
+    border-radius: 12px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 14px 18px !important;
+    font-family: "Inter", "Poppins", sans-serif;
+    backdrop-filter: blur(8px);
 }
 
-/* Individual toast */
-.toast {
-    min-width: 250px;
-    max-width: 320px;
-    padding: 14px 20px;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 14px;
-    opacity: 0;
-    right: -350px; /* start off-screen */
-    position: relative;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+.elegant-toast-title {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2px;
 }
 
-/* Toast types */
-.toast.success { background-color: #27ae60; }
-.toast.error { background-color: #e74c3c; }
+/* Progress bar styling */
+.elegant-timer-bar {
+    background: linear-gradient(90deg, #e10600, #f39c12) !important;
+}
 
-/* Close button */
-.toast .close-btn {
-    position: absolute;
-    top: 4px;
-    right: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #fff;
+/* Icon adjustment for subtle look */
+.swal2-icon {
+    transform: scale(0.8);
 }

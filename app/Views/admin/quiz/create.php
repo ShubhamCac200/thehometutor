@@ -26,7 +26,7 @@
             <h4>➕ Add Question</h4>
             <textarea id="question" class="input" placeholder="Enter question..."></textarea>
 
-            <div class="option-grid">
+            <div class="option-grid pb-4">
                 <input type="text" id="optionA" class="input" placeholder="Option A">
                 <input type="text" id="optionB" class="input" placeholder="Option B">
                 <input type="text" id="optionC" class="input" placeholder="Option C">
@@ -322,6 +322,7 @@ function clearInputs(){
 
 // Submit all
 $("#submitQuiz").click(function(){
+    debugger
     const subject_id = $("select[name='subject_id']").val();
     const title = $("input[name='title']").val();
 
@@ -335,6 +336,7 @@ $("#submitQuiz").click(function(){
         title: title,
         questions: JSON.stringify(questions)
     }, function(res){
+        debugger
         if(res.success){
             showToast("✅ Quiz saved successfully!", "success");
             $("#quizForm")[0].reset();

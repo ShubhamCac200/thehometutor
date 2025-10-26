@@ -69,34 +69,61 @@
 </footer>
 
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <script>
+    // function showToast(message, type = 'success') {
+    //     // Create toast element
+    //     var $toast = $('<div class="toast"></div>').addClass(type);
+    //     $toast.html('<span>' + message + '</span><span class="close-btn">&times;</span>');
+
+    //     // Append to container
+    //     $('#toast-container').append($toast);
+
+    //     // Slide in animation
+    //     $toast.animate({ opacity: 1, right: '0' }, 500);
+
+    //     // Close button
+    //     $toast.find('.close-btn').click(function () {
+    //         $toast.animate({ opacity: 0, right: '-350px' }, 500, function () {
+    //             $(this).remove();
+    //         });
+    //     });
+
+    //     // Auto remove after 4 seconds
+    //     setTimeout(function () {
+    //         $toast.animate({ opacity: 0, right: '-350px' }, 500, function () {
+    //             $(this).remove();
+    //         });
+    //     }, 4000);
+    // }
     function showToast(message, type = 'success') {
-        // Create toast element
-        var $toast = $('<div class="toast"></div>').addClass(type);
-        $toast.html('<span>' + message + '</span><span class="close-btn">&times;</span>');
+        const isError = type === 'error';
 
-        // Append to container
-        $('#toast-container').append($toast);
-
-        // Slide in animation
-        $toast.animate({ opacity: 1, right: '0' }, 500);
-
-        // Close button
-        $toast.find('.close-btn').click(function () {
-            $toast.animate({ opacity: 0, right: '-350px' }, 500, function () {
-                $(this).remove();
-            });
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: isError ? 'error' : 'success',
+            title: message,
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            background: isError ? '#fff2f0' : '#f0fff4',
+            color: '#222',
+            iconColor: isError ? '#e10600' : '#27ae60',
+            customClass: {
+                popup: 'elegant-toast',
+                title: 'elegant-toast-title',
+                timerProgressBar: 'elegant-timer-bar'
+            },
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
         });
-
-        // Auto remove after 4 seconds
-        setTimeout(function () {
-            $toast.animate({ opacity: 0, right: '-350px' }, 500, function () {
-                $(this).remove();
-            });
-        }, 4000);
     }
+
 
     // Display flashdata automatically
     <?php if (session()->getFlashdata('success')): ?>
