@@ -21,6 +21,7 @@ $routes->get('admin/quizzes', 'Admin::quizzes'); // All quizzes page
 $routes->get('/user', 'User::index');
 $routes->get('/register', 'Register::index');
 $routes->post('/register/save', 'Register::save');
+
 $routes->get('forgot-password', 'PasswordReset::forgotPassword');
 $routes->post('forgot-password', 'PasswordReset::sendOtp');
 
