@@ -13,8 +13,10 @@ class Admin extends BaseController
         $user = $session->get('user');
 
         // Authentication & Authorization
-        if (!$user) return redirect()->to('/login');
-        if ($user['role'] !== 'admin') return view('errors/html/access_denied');
+        if (!$user)
+            return redirect()->to('/login');
+        if ($user['role'] !== 'admin')
+            return view('errors/html/access_denied');
 
         $userModel = new UserModel();
         $quizModel = new QuizTitleModel();
@@ -40,16 +42,21 @@ class Admin extends BaseController
 
     public function quizzes()
     {
-        $quizModel = new QuizTitleModel();
+        $quizModel = new \App\Models\QuizTitleModel();
+
         $data['quizzes'] = $quizModel
             ->select('quiz_titles.*, quiz_subjects.name as subject_name')
             ->join('quiz_subjects', 'quiz_subjects.id = quiz_titles.subject_id', 'left')
             ->orderBy('quiz_titles.created_at', 'DESC')
-            ->paginate(20);
+            ->paginate(3, 'default'); // ✅ 9 cards per page (you had a mismatch in comment)
+
         $data['pager'] = $quizModel->pager;
 
         return view('admin/quizzes', $data);
     }
+
+
+
 
     public function users()
     {
@@ -57,7 +64,7 @@ class Admin extends BaseController
         $data['users'] = $userModel
             ->where('role !=', 'admin')
             ->orderBy('created_at', 'DESC')
-            ->paginate(20);
+            ->paginate(4);
         $data['pager'] = $userModel->pager;
 
         return view('admin/users', $data);

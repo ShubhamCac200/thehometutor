@@ -35,8 +35,9 @@
         </table>
     </div>
 
+    <!-- ✅ Custom Pagination -->
     <div class="pagination-wrapper">
-        <?= $pager->links() ?>
+        <?= $pager->links('default', 'custom_full') ?>
     </div>
 </div>
 
