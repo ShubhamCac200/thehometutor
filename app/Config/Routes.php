@@ -13,7 +13,11 @@ $routes->get('/login', 'Auth::login');
 $routes->post('/login', 'Auth::doLogin');
 $routes->get('/logout', 'Auth::logout');
 
-$routes->get('/admin', 'Admin::index');
+$routes->get('admin', 'Admin::index'); // Dashboard
+$routes->get('admin/users', 'Admin::users'); // All users page
+$routes->get('admin/quizzes', 'Admin::quizzes'); // All quizzes page
+
+
 $routes->get('/user', 'User::index');
 $routes->get('/register', 'Register::index');
 $routes->post('/register/save', 'Register::save');
@@ -32,6 +36,7 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($rout
     $routes->post('quiz/store', 'QuizController::store');        // Save quiz & questions
     $routes->get('quiz/view/(:num)', 'QuizController::view/$1'); // View/attempt quiz
     $routes->post('quiz/submit/(:num)', 'QuizController::submit/$1'); // ✅ Submit quiz answers
+    
 });
 
 
