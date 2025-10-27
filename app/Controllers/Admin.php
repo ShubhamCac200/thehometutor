@@ -48,7 +48,7 @@ class Admin extends BaseController
             ->select('quiz_titles.*, quiz_subjects.name as subject_name')
             ->join('quiz_subjects', 'quiz_subjects.id = quiz_titles.subject_id', 'left')
             ->orderBy('quiz_titles.created_at', 'DESC')
-            ->paginate(3, 'default'); // ✅ 9 cards per page (you had a mismatch in comment)
+            ->paginate(12, 'default'); // ✅ 9 cards per page (you had a mismatch in comment)
 
         $data['pager'] = $quizModel->pager;
 
@@ -64,7 +64,7 @@ class Admin extends BaseController
         $data['users'] = $userModel
             ->where('role !=', 'admin')
             ->orderBy('created_at', 'DESC')
-            ->paginate(4);
+            ->paginate(12);
         $data['pager'] = $userModel->pager;
 
         return view('admin/users', $data);
