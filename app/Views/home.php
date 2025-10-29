@@ -129,7 +129,7 @@
                         </div>
 
                         <div class="quiz-footer">
-                            <a href="<?= base_url('admin/quiz/view/' . $quiz['id']) ?>" class="btn-view">👁 View Quiz</a>
+                            <a href="<?= base_url('/quiz/view/' . $quiz['id']) ?>" class="btn-view">👁 View Quiz</a>
                         </div>
                     </div>
                 <?php endforeach; ?>

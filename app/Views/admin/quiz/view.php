@@ -42,7 +42,7 @@ document.getElementById('quizAttemptForm').addEventListener('submit', function(e
     e.preventDefault();
     const formData = new FormData(this);
 
-    fetch('<?= base_url("admin/quiz/submit/".$quizTitle['id']) ?>', {
+    fetch('<?= base_url("/quiz/submit/".$quizTitle['id']) ?>', {
         method: 'POST',
         body: formData,
         credentials: 'same-origin'

@@ -35,10 +35,13 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($rout
     $routes->get('quiz', 'QuizController::index');               // List all quizzes
     $routes->get('quiz/create', 'QuizController::create');       // Create quiz form
     $routes->post('quiz/store', 'QuizController::store');        // Save quiz & questions
-    $routes->get('quiz/view/(:num)', 'QuizController::view/$1'); // View/attempt quiz
-    $routes->post('quiz/submit/(:num)', 'QuizController::submit/$1'); // ✅ Submit quiz answers
+   // $routes->get('quiz/view/(:num)', 'QuizController::view/$1'); // View/attempt quiz
+   // $routes->post('quiz/submit/(:num)', 'QuizController::submit/$1'); // ✅ Submit quiz answers
     
 });
+$routes->get('quiz/view/(:num)', 'Admin\QuizController::view/$1');
+$routes->post('quiz/submit/(:num)', 'Admin\QuizController::submit/$1');
+
 
 
 

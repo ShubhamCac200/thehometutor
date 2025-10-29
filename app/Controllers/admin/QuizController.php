@@ -79,6 +79,15 @@ class QuizController extends BaseController
     }
     public function view($id)
     {
+        $session = session();
+        $user = $session->get('user');
+
+        // ✅ If not logged in, flash message + redirect
+        if (!$user) {
+            $session->setFlashdata('error', 'Please log in or create an account to access this quiz.');
+            return redirect()->to('/login');
+        }
+
         $quizTitleModel = new QuizTitleModel();
         $quizModel = new QuizModel();
 
@@ -92,9 +101,11 @@ class QuizController extends BaseController
 
         return view('admin/quiz/view', [
             'quizTitle' => $quizTitle,
-            'questions' => $questions
+            'questions' => $questions,
+            'user' => $user
         ]);
     }
+
     // Submit quiz answers
     public function submit($quizTitleId)
     {
