@@ -9,22 +9,18 @@ use Config\Services;
 
 class PasswordReset extends BaseController
 {
-    /**
-     * Step 1: Show forgot password form
-     */
+    /** Step 1: Show forgot password form */
     public function forgotPassword()
     {
         return view('auth/forgot_password');
     }
 
-    /**
-     * Step 2: Send OTP to user email
-     */
+    /** Step 2: Send OTP to user email */
     public function sendOtp()
     {
         $email = trim($this->request->getPost('email'));
 
-        // Basic email validation
+        // Validate email format
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return redirect()->back()->with('error', 'Please enter a valid email address.');
         }
@@ -36,20 +32,18 @@ class PasswordReset extends BaseController
             return redirect()->back()->with('error', 'No account found with this email address.');
         }
 
-        // Generate OTP and expiry
-        $otp = rand(100000, 999999);
-        $expires = Time::now()->addMinutes(5)->getTimestamp();
+        // Generate a 4-digit OTP and set expiry (5 mins)
+        $otp = rand(1000, 9999);
+        $expires = Time::now()->addMinutes(5);
 
-        // Store OTP in session
-        session()->set([
-            'otp_email'   => $email,
-            'otp_code'    => $otp,
-            'otp_expires' => $expires,
+        // Store OTP and expiry in DB
+        $userModel->update($user['id'], [
+            'reset_token'   => $otp,
+            'reset_expires' => $expires
         ]);
 
-        // Configure email
+        // Configure and send OTP email
         $emailService = Services::email();
-
         $emailService->setTo($email);
         $emailService->setFrom('noreply@thehometutor.com', 'The Home Tutor');
         $emailService->setSubject('Password Reset OTP');
@@ -61,54 +55,58 @@ class PasswordReset extends BaseController
             <p>If you didn’t request this, please ignore this email.</p>
         ");
 
-        // Send email and check result
         if (!$emailService->send()) {
-            // Log the error
             log_message('error', 'Email sending failed: ' . $emailService->printDebugger(['headers']));
             return redirect()->back()->with('error', 'Failed to send OTP. Please try again later.');
         }
 
+        // Save email in session just for verification step
+        session()->set('otp_email', $email);
+
         return redirect()->to('/verify-otp')->with('success', 'OTP sent successfully to your registered email.');
     }
 
-    /**
-     * Step 3: Show OTP verification form
-     */
+    /** Step 3: Show OTP verification form */
     public function verifyOtpForm()
     {
         return view('auth/verify_otp');
     }
 
-    /**
-     * Step 4: Verify OTP submitted by user
-     */
+    /** Step 4: Verify OTP */
     public function verifyOtp()
     {
         $enteredOtp = trim($this->request->getPost('otp'));
-        $storedOtp  = session()->get('otp_code');
-        $expiresAt  = session()->get('otp_expires');
+        $email = session()->get('otp_email');
 
-        if (!$storedOtp) {
+        if (!$email) {
             return redirect()->to('/forgot-password')->with('error', 'Session expired. Please request a new OTP.');
         }
 
-        if (time() > $expiresAt) {
-            session()->remove(['otp_email', 'otp_code', 'otp_expires']);
-            return redirect()->to('/forgot-password')->with('error', 'OTP expired. Please request a new one.');
+        $userModel = new UserModel();
+        $user = $userModel->where('email', $email)->first();
+
+        if (!$user || empty($user['reset_token'])) {
+            return redirect()->to('/forgot-password')->with('error', 'Invalid request. Please try again.');
         }
 
-        if ($enteredOtp != $storedOtp) {
+        // Check OTP validity
+        if ($enteredOtp != $user['reset_token']) {
             return redirect()->back()->with('error', 'Invalid OTP. Please try again.');
         }
 
-        // OTP verified
+        // Check if expired
+        if (Time::now()->isAfter($user['reset_expires'])) {
+            $userModel->update($user['id'], ['reset_token' => null, 'reset_expires' => null]);
+            return redirect()->to('/forgot-password')->with('error', 'OTP expired. Please request a new one.');
+        }
+
+        // OTP verified → allow password reset
         session()->set('otp_verified', true);
+
         return redirect()->to('/reset-password')->with('success', 'OTP verified! You can now reset your password.');
     }
 
-    /**
-     * Step 5: Show reset password form
-     */
+    /** Step 5: Show reset password form */
     public function resetPasswordForm()
     {
         if (!session()->get('otp_verified')) {
@@ -118,9 +116,7 @@ class PasswordReset extends BaseController
         return view('auth/reset_password');
     }
 
-    /**
-     * Step 6: Handle password reset submission
-     */
+    /** Step 6: Handle password reset */
     public function resetPassword()
     {
         if (!session()->get('otp_verified')) {
@@ -129,6 +125,7 @@ class PasswordReset extends BaseController
 
         $password = trim($this->request->getPost('password'));
         $confirm  = trim($this->request->getPost('confirm_password'));
+        $email    = session()->get('otp_email');
 
         if (strlen($password) < 6) {
             return redirect()->back()->with('error', 'Password must be at least 6 characters long.');
@@ -138,18 +135,24 @@ class PasswordReset extends BaseController
             return redirect()->back()->with('error', 'Passwords do not match.');
         }
 
-        $email = session()->get('otp_email');
         $userModel = new UserModel();
+        $user = $userModel->where('email', $email)->first();
+
+        if (!$user) {
+            return redirect()->to('/forgot-password')->with('error', 'Invalid request.');
+        }
 
         // Update password securely
-        $userModel->where('email', $email)->set([
-            'password'   => password_hash($password, PASSWORD_DEFAULT),
-            'updated_at' => Time::now()
-        ])->update();
+        $userModel->update($user['id'], [
+            'password'      => password_hash($password, PASSWORD_DEFAULT),
+            'reset_token'   => null,
+            'reset_expires' => null,
+            'updated_at'    => Time::now()
+        ]);
 
-        // Clear OTP session data
-        session()->remove(['otp_email', 'otp_code', 'otp_expires', 'otp_verified']);
+        // Clear all session data related to OTP
+        session()->remove(['otp_email', 'otp_verified']);
 
-        return redirect()->to('/login')->with('success', 'Password reset successfully! You can log in now.');
+        return redirect()->to('/login')->with('success', 'Password reset successfully! You can now log in.');
     }
 }
