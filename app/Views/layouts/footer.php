@@ -1,3 +1,4 @@
+</div>
 <footer class="footer">
     <div class="footer-left">
         <h3>The Home Tutor</h3>

@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <div class="container">
+    
         <header class="header">
             <!-- Brand -->
             <div class="brand">
@@ -67,3 +67,4 @@
         <!-- Toast container -->
         <!-- Toast container for jQuery toasts -->
         <div id="toast-container"></div>
+        <div class="container">

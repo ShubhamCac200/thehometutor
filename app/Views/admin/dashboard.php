@@ -91,7 +91,7 @@
         font-weight: 700;
         color: #222;
         margin-bottom: 1.5rem;
-        border-left: 4px solid #007bff;
+        /* border-left: 4px solid #007bff; */
         padding-left: 10px;
     }
 
