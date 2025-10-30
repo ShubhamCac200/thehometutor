@@ -138,6 +138,22 @@
         });
     <?php endif; ?>
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    menuToggle.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+
+      // Toggle icon between bars and close
+      const icon = this.querySelector("i");
+      icon.classList.toggle("fa-bars");
+      icon.classList.toggle("fa-times");
+    });
+  });
+</script>
+
 
 
 

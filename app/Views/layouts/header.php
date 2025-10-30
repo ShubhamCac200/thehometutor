@@ -20,31 +20,34 @@
 <body>
     <div class="container">
         <header class="header">
-            <!-- Brand / Logo -->
+            <!-- Brand -->
             <div class="brand">
                 <div class="logo">
                     <img src="/assets/images/logo.jpeg" alt="The Home Tutor Logo" class="logo-img">
                 </div>
                 <div class="brand-info">
                     <div class="site-title">The Home Tutor</div>
-                    <div class="tagline">Trusted tutors at your doorstep</div>
+                    <div class="tagline">Trusted Tutors at Your Doorstep</div>
                 </div>
             </div>
 
-
+            <!-- Burger Icon -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
 
             <!-- Navigation -->
-            <nav class="nav">
-                <div class="nav-left">
+            <nav class="nav" id="navMenu">
+                <div class="nav-links">
                     <a href="/">Home</a>
                     <a href="/about">About</a>
                     <a href="/contact">Contact</a>
                 </div>
 
-                <div class="nav-right">
+                <div class="nav-actions">
                     <?php if (session()->has('user')):
                         $u = session()->get('user'); ?>
-                        <span class="user-greet">Hi, <?= htmlspecialchars($u['full_name']) ?></span>
+                        <span class="user-greet">👋 Hi, <?= htmlspecialchars($u['full_name']) ?></span>
 
                         <?php if ($u['role'] === 'admin'): ?>
                             <a href="/admin" class="btn ghost">Dashboard</a>
@@ -55,12 +58,12 @@
                         <a href="/logout" class="btn">Logout</a>
                     <?php else: ?>
                         <a href="/login" class="btn">Login</a>
-                        <a href="/register" class="btn">Register</a>
+                        <a href="/register" class="btn ghost">Register</a>
                     <?php endif; ?>
                 </div>
             </nav>
-
         </header>
+
         <!-- Toast container -->
         <!-- Toast container for jQuery toasts -->
         <div id="toast-container"></div>
