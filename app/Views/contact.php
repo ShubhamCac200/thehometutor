@@ -184,6 +184,16 @@
 
 <main class="contact-page">
     <div class="contact-container">
+        <?php if (session()->getFlashdata('success')): ?>
+            <div style="background:#d4edda;color:#155724;padding:10px 15px;border-radius:6px;margin-bottom:15px;">
+                <?= session()->getFlashdata('success') ?>
+            </div>
+        <?php elseif (session()->getFlashdata('error')): ?>
+            <div style="background:#f8d7da;color:#721c24;padding:10px 15px;border-radius:6px;margin-bottom:15px;">
+                <?= session()->getFlashdata('error') ?>
+            </div>
+        <?php endif; ?>
+
 
         <!-- Header -->
         <div class="contact-header">
@@ -197,7 +207,8 @@
             <div class="contact-card">
                 <h3>Support</h3>
                 <p><strong>Email:</strong> thehometutorofficial@gmail.com<br>
-                   <strong>Phone:</strong> +91 7880331250</p>
+                    <strong>Phone:</strong> +91 7880331250
+                </p>
 
                 <h3 style="margin-top:25px;">Office</h3>
                 <p>12/34 Education Lane, Lucknow, Uttar Pradesh, India</p>
@@ -214,7 +225,8 @@
                 <form method="post" action="/contact-send">
                     <input class="input" type="text" name="name" placeholder="Your Full Name" required>
                     <input class="input" type="email" name="email" placeholder="Your Email Address" required>
-                    <textarea class="input" name="message" placeholder="Type your message..." rows="5" required></textarea>
+                    <textarea class="input" name="message" placeholder="Type your message..." rows="5"
+                        required></textarea>
                     <button class="btn" type="submit">Send Message</button>
                 </form>
             </div>

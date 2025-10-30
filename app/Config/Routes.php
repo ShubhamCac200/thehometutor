@@ -8,6 +8,8 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/about', 'Home::about');
 $routes->get('/contact', 'Home::contact');
+$routes->post('/contact-send', 'Home::contactSend');
+
 
 $routes->get('/login', 'Auth::login');
 $routes->post('/login', 'Auth::doLogin');

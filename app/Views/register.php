@@ -29,7 +29,7 @@
             <label>Password</label>
             <div class="password-wrapper">
                 <input class="input" type="password" id="password" name="password" placeholder="Password" required>
-                <i class="fas fa-eye toggle-password" data-target="#password"></i>
+                <i class="fas fa-eye toggle-password pb-4" data-target="#password"></i>
             </div>
             <?php if (isset($validation) && $validation->hasError('password')): ?>
                 <small class="error"><?= $validation->getError('password') ?></small>
@@ -38,7 +38,7 @@
             <label>Confirm Password</label>
             <div class="password-wrapper">
                 <input class="input" type="password" id="cpassword" name="cpassword" placeholder="Confirm Password" required>
-                <i class="fas fa-eye toggle-password" data-target="#cpassword"></i>
+                <i class="fas fa-eye toggle-password pb-4" data-target="#cpassword"></i>
             </div>
             <?php if (isset($validation) && $validation->hasError('cpassword')): ?>
                 <small class="error"><?= $validation->getError('cpassword') ?></small>
