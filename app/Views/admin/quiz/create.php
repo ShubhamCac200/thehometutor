@@ -24,16 +24,16 @@
         <!-- Question Inputs -->
         <div id="questionArea">
             <h4>➕ Add Question</h4>
-            <textarea id="question" class="input" placeholder="Enter question..."></textarea>
+            <textarea id="question" class="input" placeholder="Enter question..." required></textarea>
 
             <div class="option-grid pb-4">
-                <input type="text" id="optionA" class="input" placeholder="Option A">
-                <input type="text" id="optionB" class="input" placeholder="Option B">
-                <input type="text" id="optionC" class="input" placeholder="Option C">
-                <input type="text" id="optionD" class="input" placeholder="Option D">
+                <input type="text" id="optionA" class="input" placeholder="Option A" required>
+                <input type="text" id="optionB" class="input" placeholder="Option B" required>
+                <input type="text" id="optionC" class="input" placeholder="Option C" required>
+                <input type="text" id="optionD" class="input" placeholder="Option D" required>
             </div>
 
-            <select id="correctOption" class="input">
+            <select id="correctOption" class="input" required>
                 <option value="">Correct Option</option>
                 <option value="A">A</option>
                 <option value="B">B</option>
@@ -41,7 +41,9 @@
                 <option value="D">D</option>
             </select>
 
-            <button type="button" id="addQuestion" class="btn btn-add">Add Question</button>
+            <button type="button" id="addQuestion" class="btn btn-add">
+                <i class="fa-solid fa-plus"></i> Add Question
+            </button>
         </div>
 
         <!-- Questions Table -->
@@ -61,39 +63,47 @@
 
         <!-- Submit All -->
         <div class="btn-container">
-            <button type="button" id="submitQuiz" class="btn btn-submit">Submit Quiz</button>
+            <button type="button" id="submitQuiz" class="btn btn-submit">
+                <i class="fa-solid fa-paper-plane"></i> Submit Quiz
+            </button>
         </div>
     </form>
 </div>
 
+<!-- ✅ Font Awesome -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
+
 <style>
-/* ---------- Base Card ---------- */
+/* ---------- General ---------- */
+body {
+    background: #f7f7f7;
+    font-family: "Poppins", sans-serif;
+}
+
 .quiz-card {
     max-width: 850px;
     background: #fff;
-    border-radius: 10px;
+    border-radius: 12px;
     margin: 30px auto;
-    padding: 30px;
+    padding: 25px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* ---------- Headings ---------- */
 .section-title {
-    margin-top: 20px;
-    font-size: 1.8rem;
+    margin: 25px 0 15px;
     color: #e10600;
     font-weight: 700;
 }
 
-/* ---------- Form Styling ---------- */
+/* ---------- Form Fields ---------- */
 .form-group {
     margin-bottom: 20px;
 }
 
 label {
-    display: block;
     font-weight: 600;
     margin-bottom: 8px;
+    display: block;
     color: #333;
 }
 
@@ -102,34 +112,35 @@ label {
     padding: 10px 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    outline: none;
     font-size: 15px;
-    transition: border-color 0.3s ease;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
 .input:focus, textarea:focus, select:focus {
     border-color: #e10600;
 }
 
-/* ---------- Question Area ---------- */
-#questionArea h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #333;
+textarea {
+    height: 80px;
+    resize: none;
 }
 
+/* ---------- Option Grid ---------- */
 .option-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    margin-top: 10px;
 }
 
 /* ---------- Buttons ---------- */
 .btn {
-    display: inline-block;
-    padding: 10px 18px;
-    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
     font-weight: 600;
     border: none;
     cursor: pointer;
@@ -138,30 +149,47 @@ label {
 }
 
 .btn:hover {
-    opacity: 0.9;
     transform: translateY(-1px);
+    opacity: 0.95;
 }
 
 .btn-add {
     background-color: #e10600;
     color: #fff;
-    margin-top: 12px;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .btn-submit {
-    background-color: #27ae60;
+    background-color: #28a745;
     color: #fff;
+    width: 100%;
+}
+
+/* ---------- Action Buttons ---------- */
+.btn-edit, .btn-delete {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: background-color 0.3s ease;
 }
 
 .btn-edit {
-    background-color: #f39c12;
-    color: #fff;
-    margin-right: 5px;
+    background-color: #007bff;
+}
+.btn-edit:hover {
+    background-color: #0056b3;
 }
 
 .btn-delete {
-    background-color: #c0392b;
-    color: #fff;
+    background-color: #dc3545;
+}
+.btn-delete:hover {
+    background-color: #a71d2a;
 }
 
 /* ---------- Table ---------- */
@@ -174,7 +202,6 @@ label {
 .user-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 600px;
 }
 
 .user-table th, .user-table td {
@@ -187,69 +214,43 @@ label {
 
 .user-table th {
     background-color: #e10600;
-    color: white;
+    color: #fff;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
-.user-table td {
-    background-color: #fff;
-}
-
-.btn-container {
+.user-table td:last-child {
     text-align: center;
-    margin-top: 25px;
+}
+
+.user-table td button {
+    margin: 0 4px;
 }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
     .quiz-card {
-        padding: 20px;
+        padding: 18px;
         margin: 15px;
     }
-
     .option-grid {
         grid-template-columns: 1fr;
     }
-
     .btn {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .user-table th, .user-table td {
         font-size: 13px;
-        padding: 8px;
-    }
-
-    h2.section-title {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .quiz-card {
-        padding: 15px;
-    }
-
-    .btn {
-        font-size: 14px;
         padding: 9px;
     }
-
-    textarea {
-        height: 80px;
+    .user-table th, .user-table td {
+        font-size: 12px;
+        padding: 8px;
     }
 }
 </style>
-
 
 <script>
 let questions = [];
 let editIndex = -1;
 
-// Add or Update Question
-$("#addQuestion").click(function(){
+$("#addQuestion").click(function () {
     const q = {
         question: $("#question").val(),
         option_a: $("#optionA").val(),
@@ -259,43 +260,47 @@ $("#addQuestion").click(function(){
         correct_option: $("#correctOption").val()
     };
 
-    if(!q.question || !q.correct_option){
+    if (!q.question || !q.correct_option) {
         showToast("Please fill question and correct option!", "error");
         return;
     }
 
-    if(editIndex >= 0){
-        questions[editIndex] = q; // update
+    if (editIndex >= 0) {
+        questions[editIndex] = q;
         editIndex = -1;
-        $("#addQuestion").text("Add Question");
+        $("#addQuestion").html('<i class="fa-solid fa-plus"></i> Add Question');
     } else {
-        questions.push(q); // add new
+        questions.push(q);
     }
 
     updateTable();
     clearInputs();
 });
 
-// Update table
-function updateTable(){
+function updateTable() {
     let tbody = $("#questionTable tbody");
     tbody.empty();
     questions.forEach((q, i) => {
-        tbody.append(`<tr>
-            <td>${i+1}</td>
-            <td>${q.question}</td>
-            <td>${q.correct_option}</td>
-            <td>
-                <button type="button" class="btn btn-edit" data-index="${i}">✏️ Edit</button>
-                <button type="button" class="btn btn-delete" data-index="${i}">🗑️ Delete</button>
-            </td>
-        </tr>`);
+        tbody.append(`
+            <tr>
+                <td>${i + 1}</td>
+                <td>${q.question}</td>
+                <td>${q.correct_option}</td>
+                <td>
+                    <button type="button" class="btn-edit" data-index="${i}">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button type="button" class="btn-delete" data-index="${i}">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        `);
     });
     $("#questionTable").toggle(questions.length > 0);
 }
 
-// Edit question
-$(document).on("click", ".btn-edit", function(){
+$(document).on("click", ".btn-edit", function () {
     editIndex = $(this).data("index");
     const q = questions[editIndex];
     $("#question").val(q.question);
@@ -304,51 +309,44 @@ $(document).on("click", ".btn-edit", function(){
     $("#optionC").val(q.option_c);
     $("#optionD").val(q.option_d);
     $("#correctOption").val(q.correct_option);
-    $("#addQuestion").text("Update Question");
+    $("#addQuestion").html('<i class="fa-solid fa-rotate"></i> Update Question');
 });
 
-// Delete question
-$(document).on("click", ".btn-delete", function(){
+$(document).on("click", ".btn-delete", function () {
     const index = $(this).data("index");
     questions.splice(index, 1);
     updateTable();
 });
 
-// Clear inputs
-function clearInputs(){
+function clearInputs() {
     $("#questionArea input, #questionArea textarea").val('');
     $("#correctOption").val('');
 }
 
-// Submit all
-$("#submitQuiz").click(function(){
-    debugger
+$("#submitQuiz").click(function () {
     const subject_id = $("select[name='subject_id']").val();
     const title = $("input[name='title']").val();
 
-    if(!subject_id || !title || questions.length === 0){
+    if (!subject_id || !title || questions.length === 0) {
         showToast("Please fill all fields and add at least one question!", "error");
         return;
     }
 
     $.post("/admin/quiz/store", {
-        subject_id: subject_id,
-        title: title,
+        subject_id,
+        title,
         questions: JSON.stringify(questions)
-    }, function(res){
-        debugger
-        if(res.success){
+    }, function (res) {
+        if (res.success) {
             showToast("✅ Quiz saved successfully!", "success");
             $("#quizForm")[0].reset();
             $("#questionTable tbody").empty();
             $("#questionTable").hide();
             questions = [];
-            $("#addQuestion").text("Add Question");
+            $("#addQuestion").html('<i class="fa-solid fa-plus"></i> Add Question');
         }
     });
 });
 </script>
-
-
 
 <?= $this->include('layouts/footer') ?>
