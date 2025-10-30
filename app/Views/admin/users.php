@@ -17,6 +17,7 @@
                     <th>Role</th>
                     <th>Last Login</th>
                     <th>Registered At</th>
+                    <th>Last Login IP</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,7 @@
                         <td><span class="role <?= esc($user['role']) ?>"><?= ucfirst($user['role']) ?></span></td>
                         <td><?= date('d-m-Y H:i', strtotime($user['last_login_at'])) ?></td>
                         <td><?= date('d-m-Y H:i', strtotime($user['created_at'])) ?></td>
+                        <td><?= esc($user['last_login_ip']) ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
