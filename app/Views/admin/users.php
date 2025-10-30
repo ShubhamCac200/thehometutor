@@ -28,9 +28,16 @@
                         <td><?= esc($user['full_name']) ?></td>
                         <td><?= esc($user['email']) ?></td>
                         <td><span class="role <?= esc($user['role']) ?>"><?= ucfirst($user['role']) ?></span></td>
-                        <td><?= date('d-m-Y H:i', strtotime($user['last_login_at'])) ?></td>
+                        <td>
+                            <?php
+                            $lastLogin = $user['last_login_at'];
+                            echo ($lastLogin === '1970-01-01 00:00:00' || empty($lastLogin))
+                                ? 'N/A'
+                                : date('d-m-Y H:i', strtotime($lastLogin));
+                            ?>
+                        </td>
                         <td><?= date('d-m-Y H:i', strtotime($user['created_at'])) ?></td>
-                        <td><?= esc($user['last_login_ip']) ?></td>
+                        <td><?= !empty($user['last_login_ip']) ? esc($user['last_login_ip']) : 'N/A' ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -44,12 +51,12 @@
 </div>
 
 <script>
-document.getElementById("userSearch").addEventListener("keyup", function () {
-    const value = this.value.toLowerCase();
-    document.querySelectorAll("#userTable tbody tr").forEach(row => {
-        row.style.display = row.textContent.toLowerCase().includes(value) ? "" : "none";
+    document.getElementById("userSearch").addEventListener("keyup", function () {
+        const value = this.value.toLowerCase();
+        document.querySelectorAll("#userTable tbody tr").forEach(row => {
+            row.style.display = row.textContent.toLowerCase().includes(value) ? "" : "none";
+        });
     });
-});
 </script>
 
 <?= $this->include('layouts/footer') ?>
