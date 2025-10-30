@@ -40,7 +40,7 @@
             </a>
 
             <!-- WhatsApp -->
-            <a href="https://wa.me/918299416281" target="_blank" title="WhatsApp">
+            <a href="https://wa.me/917880331250" target="_blank" title="WhatsApp">
                 <i class="fab fa-whatsapp"></i>
             </a>
         </div>
