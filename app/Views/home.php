@@ -3,18 +3,37 @@
 <main class="main-content container my-4">
 
     <!-- Hero Section -->
-    <section class="hero bg-white p-4 p-md-5 rounded shadow-sm text-center text-md-start">
-        <div class="row align-items-center">
-            <div class="col-md-8 mx-auto">
-                <h1 class="fw-bold mb-3">Find Expert Tutors Near You</h1>
-                <p class="text-muted mb-4">
-                    Connect with qualified home tutors for school, college, or competitive exams.
-                    Learn smarter with The Home Tutor!
-                </p>
-                <a href="/register" class="btn btn-danger btn-lg px-4">Get Started</a>
+    <!-- Hero Section -->
+    <section class="hero bg-light py-5 text-center text-md-start position-relative overflow-hidden">
+        <div class="container position-relative z-2">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="fw-bold mb-3 text-dark">Find Expert Tutors Near You</h1>
+                    <p class="text-secondary mb-4">
+                        Connect with qualified home tutors for school, college, or competitive exams.
+                        <br class="d-none d-md-block">
+                        Learn smarter with <span class="text-danger fw-semibold">The Home Tutor!</span>
+                    </p>
+
+                    <!-- WhatsApp Button -->
+                    <a href="https://wa.me/917880331250" target="_blank"
+                        class="btn btn-danger btn-lg px-4 py-2 d-inline-flex align-items-center hero-btn">
+                        <i class="fa-brands fa-whatsapp me-2"></i> Contact Us on WhatsApp
+                    </a>
+
+                    <!-- Alternate text below -->
+                    <p class="mt-3 text-muted small">
+                        💡 Prefer a call? Reach us directly at <strong>+91 7880331250</strong>
+                    </p>
+                </div>
             </div>
         </div>
+
+        <!-- Decorative floating circles -->
+        <div class="floating-circle bg-danger opacity-25"></div>
+        <div class="floating-circle bg-dark opacity-10"></div>
     </section>
+
 
     <!-- === QUIZZES SECTION === -->
     <section class="quizzes mt-5">
@@ -175,7 +194,8 @@
                         style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
                         <a href="https://www.instagram.com/p/DQMb4FiEsNC/?utm_source=ig_embed&amp;utm_campaign=loading"
                             style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
-                            target="_blank">A post shared by THE HOME TUTOR (@thehometutor_uttarpradesh)</a></p>
+                            target="_blank">A post shared by THE HOME TUTOR (@thehometutor_uttarpradesh)</a>
+                    </p>
                 </div>
             </blockquote>
             <script async src="//www.instagram.com/embed.js"></script>
@@ -266,7 +286,8 @@
                         style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
                         <a href="https://www.instagram.com/p/DQMb4FiEsNC/?utm_source=ig_embed&amp;utm_campaign=loading"
                             style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
-                            target="_blank">A post shared by THE HOME TUTOR (@thehometutor_uttarpradesh)</a></p>
+                            target="_blank">A post shared by THE HOME TUTOR (@thehometutor_uttarpradesh)</a>
+                    </p>
                 </div>
             </blockquote>
             <script async src="//www.instagram.com/embed.js"></script>
@@ -357,7 +378,8 @@
                         style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
                         <a href="https://www.instagram.com/p/DQMb4FiEsNC/?utm_source=ig_embed&amp;utm_campaign=loading"
                             style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
-                            target="_blank">A post shared by THE HOME TUTOR (@thehometutor_uttarpradesh)</a></p>
+                            target="_blank">A post shared by THE HOME TUTOR (@thehometutor_uttarpradesh)</a>
+                    </p>
                 </div>
             </blockquote>
             <script async src="//www.instagram.com/embed.js"></script>
