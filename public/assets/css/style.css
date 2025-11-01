@@ -712,3 +712,89 @@ body, html {
         font-size: 12px;
     }
 }
+
+/*Quiz*/
+/* === QUIZZES SECTION (same style as hero) === */
+.quizzes {
+  position: relative;
+  background: linear-gradient(145deg, #fff 40%, #f8f8f8 100%);
+  border-radius: 16px;
+  margin-top: 40px;
+  padding: 70px 40px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Floating blurred red shapes (same as hero) */
+.quizzes::before,
+.quizzes::after {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220,53,69,0.15) 0%, transparent 70%);
+  z-index: 0;
+  animation: floaty 6s ease-in-out infinite alternate;
+}
+
+.quizzes::before {
+  top: -60px;
+  left: -80px;
+}
+
+.quizzes::after {
+  bottom: -80px;
+  right: -80px;
+  animation-delay: 2s;
+}
+
+/* Ensure content stays above the glow */
+.quizzes * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section title styling */
+.quizzes .section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Quiz grid layout */
+.quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 24px;
+}
+
+/* Quiz cards */
+.quiz-card {
+  background: #fff;
+  border: 1px solid #f1f1f1;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+
+.quiz-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(217,0,0,0.18);
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+  .quizzes {
+    padding: 50px 24px;
+  }
+  .quizzes .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+/*Quiz*/
