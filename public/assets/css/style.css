@@ -212,153 +212,99 @@ body, html {
         font-size: 0.95rem;
     }
 }
-
-.footer {
-    background: linear-gradient(135deg, #e10600, #000); /* Red to black gradient */
-    color: #fff; /* White text */
-    padding: 40px 8%;
-    margin-top: 28px;
-    border-top: 3px solid #9b0000; /* Thicker top border */
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Align sections to top */
-    flex-wrap: wrap; /* Wrap on smaller screens */
-    border-radius: 12px 12px 0 0; /* Rounded top corners */
-    box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    font-family: 'Inter', sans-serif;
-    gap: 30px;
+/* footer */.footer {
+  background: linear-gradient(120deg, #c00000, #000);
+  color: #fff;
+  padding: 60px 10%;
+  border-top: 4px solid #ff1a1a;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+  font-family: "Inter", sans-serif;
 }
 
-/* Left Section */
-.footer .footer-left {
-    flex: 1;
-    min-width: 220px;
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 50px;
 }
 
-.footer .footer-left h3 {
-    margin: 0 0 10px 0;
-    font-size: 1.6em;
+/* Left side */
+.footer-left h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
 }
 
-.footer .footer-left p {
-    margin: 0;
-    font-size: 0.95em;
-    color: #ddd;
+.footer-left p {
+  font-size: 1em;
+  color: #ddd;
 }
 
-/* Right Section */
-.footer .footer-right {
-    flex: 1;
-    min-width: 220px;
-    text-align: left;
-}
-
-.footer .footer-right p {
-    margin: 0 0 8px 0;
-    font-weight: 600;
+/* Right side */
+.footer-right h4 {
+  margin-bottom: 12px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 .social-icons {
   display: flex;
-  gap: 15px;
-  margin-top: 8px;
+  flex-wrap: wrap;
+  gap: 18px;
 }
 
 .social-icons a {
   color: #fff;
-  font-size: 22px;
-  transition: color 0.3s, transform 0.3s;
+  font-size: 26px;
+  transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: #ff9800; /* your brand color */
+  color: #ffdd57;
   transform: scale(1.2);
 }
 
-/* Bottom Section */
-.footer .footer-bottom {
-    width: 100%;
-    text-align: center;
-    margin-top: 25px;
-    color: #ddd; /* softer gray for better contrast on red/black */
-    font-size: 0.9em;
+/* Bottom section */
+.footer-bottom {
+  text-align: center;
+  margin-top: 35px;
+  font-size: 0.95em;
+  color: #ccc;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 15px;
 }
 
-.footer .footer-bottom a {
-    color: #ffd700; /* warm gold to pop on red/black */
-    text-decoration: none;
-    margin: 0 5px;
-    transition: color 0.3s ease;
-    font-weight: 500;
+.footer-bottom a {
+  color: #ffdd57;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 4px;
+  transition: 0.3s;
 }
 
-.footer .footer-bottom a[href*="instagram"] {
-    color: #ff7aa2; /* subtle pink tone */
+.footer-bottom a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
-.footer .footer-bottom a[href*="linkedin"] {
-    color: #66b3ff; /* softer LinkedIn blue */
-}
-
-.footer .footer-bottom a[href*="wa.me"] {
-    color: #7CFC00; /* fresh lime green for Shubham name */
-}
-
-.footer .footer-bottom a:hover {
-    color: #fff;
-    text-decoration: underline;
-}
-
-.footer .social-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 8px;
-}
-
-.footer .social-icons a {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 500;
-    font-size: 0.95em;
-    transition: transform 0.3s, color 0.3s;
-}
-
-.footer .social-icons a svg {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.footer .social-icons a:hover {
-    color: #ffdd57;
-    transform: scale(1.1);
-}
-
-
-/* Responsive for small screens */
+/* Responsive */
 @media (max-width: 768px) {
-    .footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer .footer-left,
-    .footer .footer-right {
-        text-align: center;
-    }
-
-    .footer .social-icons {
-        justify-content: center;
-    }
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-left, .footer-right {
+    text-align: center;
+  }
+  .social-icons {
+    justify-content: center;
+  }
 }
-
-
-
-
+/* footter */
 /* Auth Page Container */
 .auth-page {
     display: flex;

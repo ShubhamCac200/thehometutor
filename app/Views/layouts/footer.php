@@ -1,73 +1,54 @@
 </div>
 <footer class="footer">
-    <div class="footer-left">
-        <h3>The Home Tutor</h3>
-        <p>Trusted tutors at your doorstep. Learn smarter, achieve better!</p>
-    </div>
+    <div class="footer-container">
+        <div class="footer-left">
+            <h3>The Home Tutor</h3>
+            <p>Trusted tutors at your doorstep. Learn smarter, achieve better!</p>
+        </div>
 
-    <div class="footer-right">
-        <p>📱 Follow Us on Social Media :</p>
-        <div class="social-icons">
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/thehometutor_uttarpradesh?igsh=dW42NDZ0YzJheWR0" target="_blank"
-                title="Instagram">
-                <i class="fab fa-instagram"></i>
-            </a>
-
-            <!-- Facebook -->
-            <a href="https://www.facebook.com/profile.php?id=61561300686752&mibextid=ZbWKwL" target="_blank"
-                title="Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-
-            <!-- Threads -->
-            <a href="https://www.threads.net/@thehometutor_uttarpradesh?invite=3" target="_blank" title="Threads">
-                <i class="fa-brands fa-threads"></i>
-            </a>
-
-            <!-- X (Twitter) -->
-            <a href="https://x.com/THEHOMETUTOR_?t=WehCQlsCQkLMyQu11Pldaw&s=09" target="_blank" title="X">
-                <i class="fab fa-x-twitter"></i>
-            </a>
-
-            <!-- Telegram -->
-            <a href="https://t.me/thehometutor_uttarpradesh" target="_blank" title="Telegram">
-                <i class="fab fa-telegram-plane"></i>
-            </a>
-
-            <!-- YouTube -->
-            <a href="https://www.youtube.com/@THEHOMETUTOR_uttarpradesh" target="_blank" title="YouTube">
-                <i class="fab fa-youtube"></i>
-            </a>
-
-            <!-- WhatsApp -->
-            <a href="https://wa.me/917880331250" target="_blank" title="WhatsApp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
+        <div class="footer-right">
+            <h4>📱 Follow Us on Social Media</h4>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/thehometutor_uttarpradesh?igsh=dW42NDZ0YzJheWR0" target="_blank"
+                    title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61561300686752&mibextid=ZbWKwL" target="_blank"
+                    title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.threads.net/@thehometutor_uttarpradesh?invite=3" target="_blank" title="Threads">
+                    <i class="fa-brands fa-threads"></i>
+                </a>
+                <a href="https://x.com/THEHOMETUTOR_?t=WehCQlsCQkLMyQu11Pldaw&s=09" target="_blank" title="X">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://t.me/thehometutor_uttarpradesh" target="_blank" title="Telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+                <a href="https://www.youtube.com/@THEHOMETUTOR_uttarpradesh" target="_blank" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://wa.me/917880331250" target="_blank" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
         </div>
     </div>
 
-
     <div class="footer-bottom">
-        &copy; <?= date('Y') ?> The Home Tutor. All rights reserved.
-        <br>
+        &copy; <?= date('Y') ?> The Home Tutor. All rights reserved.<br>
         <small>
             Developed by
-            <a href="https://wa.me/918299722527" target="_blank" title="Chat on WhatsApp">
-                <i class="fab fa-whatsapp"></i> Shubham Goswami
-            </a>
-            |
-            <a href="https://www.instagram.com/_i_am_shubham__/" target="_blank" title="Instagram Profile">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
-            |
-            <a href="https://www.linkedin.com/in/shubham-goswami-6a0542191/" target="_blank" title="LinkedIn Profile">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
+            <a href="https://wa.me/918299722527" target="_blank"><i class="fab fa-whatsapp"></i> Shubham Goswami</a> |
+            <a href="https://www.instagram.com/_i_am_shubham__/" target="_blank"><i class="fab fa-instagram"></i>
+                Instagram</a> |
+            <a href="https://www.linkedin.com/in/shubham-goswami-6a0542191/" target="_blank"><i
+                    class="fab fa-linkedin"></i> LinkedIn</a>
         </small>
     </div>
-
 </footer>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -140,19 +121,19 @@
     <?php endif; ?>
 </script>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const menuToggle = document.getElementById("menuToggle");
-    const navMenu = document.getElementById("navMenu");
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const navMenu = document.getElementById("navMenu");
 
-    menuToggle.addEventListener("click", function () {
-      navMenu.classList.toggle("active");
+        menuToggle.addEventListener("click", function () {
+            navMenu.classList.toggle("active");
 
-      // Toggle icon between bars and close
-      const icon = this.querySelector("i");
-      icon.classList.toggle("fa-bars");
-      icon.classList.toggle("fa-times");
+            // Toggle icon between bars and close
+            const icon = this.querySelector("i");
+            icon.classList.toggle("fa-bars");
+            icon.classList.toggle("fa-times");
+        });
     });
-  });
 </script>
 
 
